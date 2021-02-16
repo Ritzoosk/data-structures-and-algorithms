@@ -118,7 +118,7 @@ const createList = (availableItems) => {
 /* ------------------------------------------------------------------------------------------------
 STRETCH - CHALLENGE 7
 
-Write a function named fizzbuzz that takes in an array of numbers.
+Write a function named fizzbuzz that takes in an *array* of numbers.
 
 Iterate over the array using forEach to determine the output based on several rules:
   - If a number is divisible by 3, add the word "Fizz" to the output array.
@@ -131,6 +131,21 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+  arr.forEach(num=> {
+    if(num % 3 == 0) {
+      if(num % 5 === 0){
+        results.push( 'Fizz Buzz');
+      }else{
+        results.push( 'Fizz');
+      }
+    }else if(num % 5 ===0){
+      results.push( 'Buzz');
+    } else {
+      results.push(num);
+    }
+  });
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -184,7 +199,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
