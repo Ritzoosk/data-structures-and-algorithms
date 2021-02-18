@@ -10,6 +10,15 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   // Solution code here...
+<<<<<<< HEAD
+=======
+
+  const newArr = [];
+
+  arr.forEach(function(value) {newArr.push(Math.pow(value, 3));
+  });
+  return newArr;
+>>>>>>> 3cbf4f2111325434ee2a760f7402368b1b2a402e
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,6 +30,13 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 
 const appendTheEnd = (str) => {
   // Solution code here...
+<<<<<<< HEAD
+=======
+  const endStr = (`${str} The end.`);
+
+  return endStr;
+
+>>>>>>> 3cbf4f2111325434ee2a760f7402368b1b2a402e
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,6 +54,15 @@ console.log(a) prints [1, 2, 3, 1]
 
 const appendFirstToLast = (arr) => {
   // Solution code here...
+<<<<<<< HEAD
+=======
+  const firstThing = arr[0];
+
+  arr.push(firstThing);
+
+  return arr;
+
+>>>>>>> 3cbf4f2111325434ee2a760f7402368b1b2a402e
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -132,7 +157,11 @@ describe('Testing challenge 3', () => {
   });
 });
 
+<<<<<<< HEAD
 describe('Testing challenge 4', () => {
+=======
+xdescribe('Testing challenge 4', () => {
+>>>>>>> 3cbf4f2111325434ee2a760f7402368b1b2a402e
   test('It should add a property to an object', () => {
     const a = { fullName: 'Octavia Butler' };
     addBirthYearProperty(a, 1947);
