@@ -26,7 +26,16 @@ let starWarsPeople = [
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  
+  starWarsArr.sort((a,b) => {
+    if(parseInt(a.height) > parseInt(b.height)){
+      return -1;
+    }else if (parseInt(a.height) < parseInt(b.height)){
+      return 1;
+    }else{
+      return 0;
+    }
+  });
+  return starWarsArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,7 +47,9 @@ Write a function named removeThree that takes an index and an array. The functio
 const removeThree = (idx, arr) => {
   // Solution code here...
 
-
+  arr.splice(idx, 3);
+  // console.log(arr);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,6 +60,9 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
+  //console.log(arr.join());
+return arr.join(' ');
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,9 +81,13 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-
-
-  return result;
+for(var i = 0 ; i <= str.length ; i++){
+  
+  
+  result.push(str.slice(i));
+  // return result;
+}
+return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,6 +100,15 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  let result = [];
+
+  for(var i = 0 ; i < arr.length ; i++){
+    result.push(arr.slice(i, i+1));
+
+  }
+  console.log(result);
+  return result;
+
 };
 
 
@@ -128,14 +155,17 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
-// recipe.ingredients.forEach( => {
-//   let search = value.match(/^[0-9]+\b\s\w+\S+\)
-// });  
+  //Solution code here...
+recipe.ingredients.forEach( value => {
+let a = value.indexOf(' ');
+let b = value.indexOf(' ', a+1);
 
-  return result;
+  result.push(value.slice(b+1))
+
+ 
+});
+return result;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -260,19 +290,19 @@ describe('Testing challenge 1', () => {
   })
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array with three items removed', () => {
     expect(removeThree(2, [1, 2, 3, 4, 5, 6, 7, 8])).toStrictEqual([1, 2, 6, 7, 8]);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should join an array', () => {
     expect(joinArray(['hello', '301', 'students'])).toStrictEqual('hello 301 students');
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual(['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', '']);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
@@ -281,7 +311,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
