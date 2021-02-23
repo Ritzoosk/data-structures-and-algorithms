@@ -296,7 +296,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
+xdescribe('Testing challenge 5', () => {
   test('It should return an array of the names of the houses', () => {
     expect(getHouses(characters)[0]).toStrictEqual('Greyjoy');
     expect(getHouses(characters).length).toStrictEqual(7);
