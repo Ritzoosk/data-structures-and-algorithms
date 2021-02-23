@@ -142,6 +142,7 @@ const updateNumbers = (obj) => {
     let newEntry = key.join(': ');
     output.push(newEntry);
   });
+  return output;
 };
 
 
@@ -155,6 +156,11 @@ Write a function named getHouses that returns a new array containing the names o
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+//
+  arr.forEach(char => {
+    houses.push(Object.values(char.house).join(' '))
+  });
+
   return houses;
 };
 
@@ -173,6 +179,13 @@ hasChildrenValues(characters, 'Sansa') will return false
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
 
+  for (let i in arr){
+
+    if(arr[i].children.length > 0 && character === arr[i].name){
+      return true;
+    }
+  }
+return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
