@@ -27,3 +27,9 @@ You can see the results of your tests online in the "Actions" tab of your reposi
 When you finish the assignment each day, make a new pull request from your daily challenge branch to your master branch and submit the PR URL in Canvas. You can submit a link to a pull request even if the pull request is closed.
 
 Nicki Baldwin and Zach H. helped me on challenge 6
+
+Matt Simms has helped on a lot of these
+
+Zach H. as well
+
+https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
