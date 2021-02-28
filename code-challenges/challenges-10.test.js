@@ -24,11 +24,20 @@ Returns: ['dyoll', 'eimaj'];
 
   const getNames = (arr) => {
   // Solution code here...
-  let newArr = arr.map((val, idx) =>{
-    console.log(newArr);
-    return ((val.name.split('')).reverse).join;
-    
-  });
+  // console.log(obj.name);
+  let newArr = [];
+  arr.forEach(obj => {
+  
+  newArr.push(reverseString(obj.name))
+  //console.log(obj);
+  })
+
+  function reverseString(str) {
+    return str.split("").reverse().join("");
+}
+
+return newArr;
+  
 
 };
 
@@ -44,6 +53,19 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  let arrCount = 0;
+  input.forEach(function(arr){
+    arr.forEach(function(num){
+      if(target === num){
+        arrCount++;
+      }
+    })
+  })
+  //console.log(obj);
+return arrCount;
+  
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -58,6 +80,16 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  let arrCount = 0;
+  input.forEach(function(arr){
+    arr.forEach(function(num){
+        arrCount = arrCount + num;
+      
+    })
+  })
+  //console.log(obj);
+return arrCount;
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,11 +102,30 @@ This function should first remove any elements that are not numbers or are not d
 This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
 
 For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
+expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([[1024, 1048576, 32], [32], [1024]]);
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  let catchArr = [];
+  console.log('input', input)
+  input.forEach(function(arr){
+
+    arr.forEach(function(num){
+
+      if(num % 5  === 0 ){
+        arr.splice(num)
+      }
+
+    })
+
+  })
+
+  //console.log(obj);
+return catchArr;
+  
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 
@@ -138,9 +189,24 @@ let starWarsData = [{
   gender: 'female'
 }];
 
+//.toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
+
 let findMaleAndFemale = (data) => {
   // Solution code here...
-};
+  
+  
+  let catchArr = data.filter(function(val){
+    return (val.gender === 'male' || val.gender === 'female' )
+    })
+
+  console.log(catchArr);
+  
+  //console.log(obj);
+return (catchArr.map(val => val.name).join(' and '));
+  
+  };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 
@@ -149,7 +215,19 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  // // Solution code here...
+  // let shortest = 1000;
+  // let catchArr = data.filter(function(val){
+
+  //   return (data.name )
+  //   })
+  // console.log(catchArr);
+  
+  // //console.log(obj);
+// return (catchArr.map(val => val.name).join(' and '));
+
+  
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,7 +248,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the number of times the input is in the nested arrays', () => {
     expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
     expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
@@ -182,7 +260,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should add all the numbers in the arrays', () => {
     const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
 
@@ -204,7 +282,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return only characters that are male or female', () => {
     expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
     expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
