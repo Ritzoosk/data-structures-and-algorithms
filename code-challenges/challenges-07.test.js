@@ -52,7 +52,10 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-  //const arrNew = 
+  const newArr = arr.map((value) => {
+      return Math.pow(2, value);
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,6 +76,8 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -225,7 +230,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
