@@ -162,7 +162,6 @@ let b = value.indexOf(' ', a+1);
 
   result.push(value.slice(b+1))
 
- 
 });
 return result;
 };
