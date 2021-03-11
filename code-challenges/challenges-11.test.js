@@ -50,10 +50,19 @@ CHALLENGE 4
 Write a function named hasNumber that uses a regular expression pattern to determine if a string has one or more letter followed by one or more digit.
 
 If it does, return true. If not, return false.
+expect(hasNumber('Hell0')).toBeTruthy();
+    expect(hasNumber('Bob')).toBeFalsy();
+    expect(hasNumber(12345)).toBeFalsy();
+    expect(hasNumber('abcdefghijkl')).toBeFalsy();
+    expect(hasNumber('c00kie')).toBeTruthy();
+    expect(hasNumber(789)).toBeFalsy();
+    expect(hasNumber('Code301')).toBeTruthy();
+    expect(hasNumber('99Code')).toBeFalsy();
 ------------------------------------------------------------------------------------------------ */
 
 const hasNumber = (string) => {
   // Solution code here...
+  return (/[a-zA-Z]+\d+/gm).test(string);
 
 
 };
@@ -76,6 +85,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
+ return (/^[A-Za-z0-9]+\.?[A-Za-z0-9]+?@[A-Za-z0-9]+.(net|com|org)$/).test(email);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,6 +112,9 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
+
+  return (/^(\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/).test(phoneNumber);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -161,7 +175,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true if a string has one or more word characters followed by one or more digits', () => {
     expect(hasNumber('Hell0')).toBeTruthy();
     expect(hasNumber('Bob')).toBeFalsy();
@@ -174,7 +188,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should match a basic email', () => {
     expect(validateEmail('joe@codefellows.com')).toBeTruthy();
   });
@@ -204,7 +218,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should match the acceptable phone number formats', () => {
     expect(validatePhoneNumber('(555) 555-5555')).toBeTruthy();
     expect(validatePhoneNumber('555 555-5555')).toBeTruthy();

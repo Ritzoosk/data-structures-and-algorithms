@@ -41,19 +41,20 @@ return: 23
 const findMax = (matrix) => {
   // Solution code here...
 
-  f
-  let result = arr.reduce((acc, val)=>{
-    if (acc<val){
-      return val;
-    }else{
-      return acc;
-    }
-   
-  })
-
- return result;
-
   
+  let result = matrix.reduce((acc, val)=>{
+  let redArr = val.reduce((acc, val)=>{
+    if(val>acc){
+      acc = val;
+    }
+    return acc;
+  },0)
+  if(acc<redArr){
+    acc = redArr
+}
+return acc;
+  },0)
+ return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,6 +73,15 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  return matrix.reduce((acc, val) =>{
+    let innerArr =  val.reduce((acc, val) =>{
+      acc+=val;
+      return acc;
+    },0)
+  acc+=innerArr;
+  return acc;
+
+  },0)
 };
 
 
@@ -99,6 +109,18 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  let newArr = [];
+  for(let i = 0; i < hoursOpen.length; i++){
+    let counter = 0;
+    for(let j = 0; j < cookieStores.length; j++){
+      counter += cookieStores[j][i];
+    }
+    newArr.push(counter);
+  }
+
+
+
+  return newArr;
 
 };
 
@@ -243,7 +265,7 @@ Run your tests from the console: jest challenge-12.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the maximum number found', () => {
     expect(maxInArray([4, 2, 7, 5, 9, 2])).toStrictEqual(9);
   });
@@ -252,20 +274,20 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the max value', () => {
     expect(findMax([[13,24,24,2], [2,5,6], [2,3]])).toStrictEqual(24);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return the total sum', () => {
     expect(totalSum([[13,24,24,2], [2,5,6], [2,3]])).toStrictEqual(81);
     expect(totalSum([])).toStrictEqual(0);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should add the hourly totals array', () => {
     expect(grandTotal(cookieStores)).toStrictEqual([88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169]);
   });

@@ -107,22 +107,20 @@ expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]]))
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
-  let catchArr = [];
-  console.log('input', input)
+  let outerArr = [];
+  //console.log('input', input)
   input.forEach(function(arr){
-
+    const insideArr = [];
     arr.forEach(function(num){
-
-      if(num % 5  === 0 ){
-        arr.splice(num)
+      
+      if(num % 5  === 0 && typeof num === "number" ){
+        console.log(typeof num)
+        insideArr.push(Math.pow(2, num))
       }
-
     })
-
+    outerArr.push(insideArr);
   })
-
-  //console.log(obj);
-return catchArr;
+return outerArr;
   
 };
 
@@ -216,17 +214,15 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // // Solution code here...
-  // let shortest = 1000;
-  // let catchArr = data.filter(function(val){
+  let shortest = Infinity;
 
-  //   return (data.name )
-  //   })
-  // console.log(catchArr);
-  
-  // //console.log(obj);
-// return (catchArr.map(val => val.name).join(' and '));
-
-  
+  return data.reduce((accum, val) =>{
+    if(parseInt(val.height) < shortest){
+      shortest = parseInt(val.height);
+      accum = val.name;
+    }
+    return accum;
+  },'')
 
 };
 
@@ -241,7 +237,7 @@ Run your tests from the console: jest challenges-10.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It returns an array of names reversed', () => {
     expect(getNames([{name:'lloyd', age: 32, shoeSize: 12}, {name:'jamie', age:21, shoeSize: 8}])).toStrictEqual(['dyoll', 'eimaj']);
     expect(getNames([])).toStrictEqual([]);
@@ -268,7 +264,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
     expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([[1024, 1048576, 32], [32], [1024]]);
   });
@@ -289,7 +285,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return the name of the shortest character', () => {
     expect(findShortest(starWarsData)).toStrictEqual('R2-D2');
   });
