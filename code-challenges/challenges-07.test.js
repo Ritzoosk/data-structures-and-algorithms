@@ -8,7 +8,7 @@ Write a function named replaceZeros that, given a string, uses Regex to replace 
 
 const replaceZeros = (string) => {
   // Solution code here...
-
+  return string.replace(/0/g, 'zero');
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,7 +52,11 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-  //const arrNew = 
+  const newArr = []; 
+  for (let i =0; i < arr.length; i++){
+    newArr.push(Math.pow(2, arr[i]));
+  }
+return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -63,6 +67,12 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  const newArr = []; 
+  arr.forEach(callBack => {
+    newArr.push(Math.pow(2, callBack))
+  });
+return newArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,9 +81,15 @@ CHALLENGE 6
 Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
 
-const mapTwoToThe = (arr) => {
-  // Solution code here...
-};
+// const mapTwoToThe = (arr) => {
+//   // Solution code here...
+//   return arr.map(callBack => {
+//   return (Math.pow(2, callBack))
+//   });
+// };
+
+
+const mapTwoToThe = (arr) => arr.map(callBack => Math.pow(2, callBack));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -207,7 +223,7 @@ Run your tests from the console: jest challenges-07.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should replace all the 0\'s with the word "zero"', () => {
     expect(replaceZeros('301 is s0 much fun!')).toStrictEqual('3zero1 is szero much fun!');
   });
@@ -225,7 +241,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -236,7 +252,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -247,7 +263,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
