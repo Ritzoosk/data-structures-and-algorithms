@@ -8,7 +8,7 @@ class LinkedList {
   }
 
   append(val) {
-    let node = Node(val);
+    let node = new Node(val);
     if(!this.head) {
       this.head = node;
     } else {
@@ -22,7 +22,7 @@ class LinkedList {
   } //END APPEND
 
   insert(val) {
-    let node = Node(val);
+    let node = new Node(val);
     if(!this.head) {
       this.head = node;
     } else { // if LL already exists set the next//
@@ -42,7 +42,7 @@ class LinkedList {
       let checkForVal = this.head; // start looking at the head
 
       while (checkForVal) {
-        if(checkForVal === val) {
+        if(checkForVal.value === val) {
           console.log ("found it!")
           return true;
         }else{
@@ -54,10 +54,25 @@ class LinkedList {
     }
   }
 
-  toString(val) {
-    
+  //"{ a } -> { b } -> { c } -> NULL"
+  toString() {
+  let returnString = '';
+    if(!this.head) {
+      console.log('nothing to look in');
+      return false;
+    } else {
+      let currentNode = this.head;
+      while (currentNode) {
+        returnString += `{ ${currentNode.value} } -> `;
+        currentNode = currentNode.next;
+      }
+      return returnString += 'NULL';
+    }
   }
 
 }
+
+
+
 
 module.exports = LinkedList;
