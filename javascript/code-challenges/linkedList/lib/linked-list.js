@@ -70,6 +70,62 @@ class LinkedList {
     }
   }
 
+  insertBefore(val, newVal) {
+    if(!this.head) {
+      console.log('nothing to look in');
+      return "Value not found";
+    } else { //go look for it
+      console.log("looking for:", val);
+
+      let checkForVal = this.head; // start looking at the head
+      if(checkForVal.value === val){
+        this.head = new Node(newVal);
+        this.head.next = checkForVal;
+      }
+      while (checkForVal.next) {
+        if(checkForVal.next.value === val) {
+          console.log ("found it!");
+          let newNode = new Node(newVal);
+          let holdVal = checkForVal;
+          newNode.next = holdVal.next
+          holdVal.next = newNode;
+          
+          return true;
+        }else{
+          checkForVal = checkForVal.next //goto the next position
+        }
+      }
+      console.log(`nope the ${val} inst in ${this.head}`)
+      return "Value not found";
+    }
+  }
+
+  insertAfter(val, newVal) {
+    if(!this.head) {
+      console.log('nothing to look in');
+      return "Value not found";
+    } else { //go look for it
+      console.log("looking for:", val);
+
+      let checkForVal = this.head; // start looking at the head
+      while (checkForVal.next) {
+        if(checkForVal.value === val) {
+          console.log ("found it!");
+          let newNode = new Node(newVal);
+          let holdVal = checkForVal.next; //look at this again
+          checkForVal.next = newNode;
+          checkForVal.next.next = holdVal;
+          return true;
+        }else{
+          checkForVal = checkForVal.next //goto the next position
+        }
+      }
+      console.log(`nope the ${val} inst in ${this.head}`)
+      return "Value not found";
+    }
+  }
+
+
 }
 
 
