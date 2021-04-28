@@ -125,6 +125,15 @@ class LinkedList {
     }
   }
 
+  kthfromend(k) {
+    if(!this.head) {
+      return false;
+    } else {
+      //count LL to determine length
+      // length minus k
+      // walk into that position in ll and return value
+    }
+  }
 
 }
 
