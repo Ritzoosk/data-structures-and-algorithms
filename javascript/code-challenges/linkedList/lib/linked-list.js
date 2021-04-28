@@ -83,7 +83,7 @@ class LinkedList {
         this.head.next = checkForVal;
       }
       while (checkForVal.next) {
-        if(checkForVal.next.value === val) {
+        if(checkForVal.next.value === val) { // refactor with includes()
           console.log ("found it!");
           let newNode = new Node(newVal);
           let holdVal = checkForVal;
