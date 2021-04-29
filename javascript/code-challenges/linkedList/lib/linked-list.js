@@ -135,6 +135,16 @@ class LinkedList {
     }
   }
 
+  zipLists(list1, list2) {
+    if(!this.head) {
+      return false;
+    } else {
+      // with a 'reader' walking up each list sequentially
+      // add alternating values to a new LL? OR add list 2 into list1
+      // going to need to store nodes of either list to avoid losing the "links"
+    }
+  }
+
 }
 
 
