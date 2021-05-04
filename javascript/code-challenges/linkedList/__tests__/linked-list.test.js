@@ -74,7 +74,7 @@ describe('Linked List', () => {
   });
 
 
-  it('kthfromEnd should return a value that is k from the end of the ll', () => {
+  xit('kthfromEnd should return a value that is k from the end of the ll', () => {
     let newLinkedList = new LinkedList();
     newLinkedList.insert(99);
     newLinkedList.insert(999);
