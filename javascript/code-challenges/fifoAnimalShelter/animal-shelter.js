@@ -1,2 +1,84 @@
 "use strict";
 
+class Node {
+  constructor(val) {
+    this.value = val;
+    this.next = null;
+  }
+}
+
+class Stack {
+  constructor() {
+    this.top = null;
+  }
+
+  push(node) {
+    if (this.isEmpty()){
+      this.top = node;
+      return;
+    } else {
+      node.next = this.top;
+      this.top = node; //now the new node that was pushed in is on "top and its .next is pointing at what was here previously"
+    }
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      throw 'nothing to pop, no nodes in stack';
+    } else {
+      let temp = this.top;
+      this.top = temp.next;
+      temp.next = null;
+      return temp;       //store top into temp---point top to temp---set temp.next to NULL---return temp
+    }
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      throw 'nothing to peek, no nodes in stack';
+    } else {
+      return this.top.value; //here is whats on top!
+    }
+  }
+
+  isEmpty() {
+    return this.top === null; 
+  }
+} //END STACK
+
+
+class AnimalShelter {
+  constructor(){
+    this.front = new Stack();
+    this.rear = new Stack();
+  }
+
+  enqueue(node) {
+    this.rear.push(node); // get in the back of the line, hence rear//
+  }
+
+  dequeue(pref) {
+    if (this.front.isEmpty()) {
+      while(!this.rear.isEmpty()) { //while someone one is in the back of the line
+        this.front.push(this.rear.pop());
+      }
+    }
+    if(this.front.top.value.type === pref){
+      return this.front.pop();
+    }
+    let looking = this.front.top;
+    let temp = this.front.top;
+    while(looking){
+      if (looking.value.type === pref){
+        console.log('test');
+        temp.next = looking.next;
+        return looking.value; //node comes off the front of the line?
+      }
+      temp = looking;
+      looking = looking.next;
+    }
+    return null;
+  }
+}//END
+
+module.exports = {AnimalShelter, Node};
