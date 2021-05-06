@@ -54,7 +54,7 @@ class PseudoQueue {
   }
 
   enqueue(node) {
-    this.rear.push(node); // get in the back of the line, hence rear
+    this.rear.push(node); // get in the back of the line, hence rear//
   }
 
   dequeue() {
@@ -67,10 +67,4 @@ class PseudoQueue {
   }
 }//END
 
-
-//??//
-// module.exports= {
-//   node: Node,
-//   stack: stack,
-//   quene: PseudoQueue,
-// };
+module.exports = {PseudoQueue, Node};
