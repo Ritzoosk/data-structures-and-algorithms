@@ -81,7 +81,30 @@ class BinaryTree {
 
   }
 
+  breadthFirst(tree) {
+    let results = [];
+    let arr2 = [tree.root];
+
+    while(arr2.length != 0){
+      let arr3 = [];
+      arr2.forEach((node)=>{
+        if (node.left) arr3.push(node.left);
+        if (node.right) arr3.push(node.right);
+        results.push(node.value)
+      })
+      arr2 = arr3;
+    }
+return results;
+
+  }
+
+
 }//BinaryTree End
+
+
+
+////
+
 
 class BinarySearchTree {
 
