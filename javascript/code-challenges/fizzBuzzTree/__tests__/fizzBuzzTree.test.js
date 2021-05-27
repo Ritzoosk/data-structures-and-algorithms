@@ -24,14 +24,8 @@ describe('Binary tree tests', () => {
     expect(fizBuzzResult.root.value).toEqual("Fizz");
     expect(fizBuzzResult.root.left.value).toEqual("Buzz");
     expect(fizBuzzResult.root.right.value).toEqual("Fizz");
-    // expect(fizBuzzResult.root.left.left.value).toEqual("FizzBuzz");
-    // expect(fizBuzzResult.root.right.right.value).toEqual("7");
+    expect(fizBuzzResult.root.left.left.value).toEqual("FizzBuzz");
+    expect(fizBuzzResult.root.right.right.value).toEqual("7");
 
   });
-
-
-
-
-
-
 });
